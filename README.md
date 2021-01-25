@@ -1,6 +1,6 @@
 # next-branch-env
 
-Branch-specific environments for git-deployed Vercel deployments.
+Branch environments for Next.js deployments on Vercel.
 
 For example, if you need to [create a staging environment](https://vercel.com/knowledge/set-up-a-staging-environment-on-vercel) for your Vercel deployments, you can use this library to make the `STAGING_SECRET` environment variable (defined in your [Vercel Project Settings](https://vercel.com/docs/environment-variables)) available as `SECRET` in Vercel deployments deployed from your `staging` branch.
 
