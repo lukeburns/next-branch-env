@@ -8,6 +8,7 @@ module.exports = function nextBranchEnv (opts = {}) {
   const owner = process.env.VERCEL_GIT_REPO_OWNER || opts.owner || 'git'
   const repo = process.env.VERCEL_GIT_REPO_SLUG || process.env.GIT_REPO_SLUG || opts.repo || 'local'
   const branch =
+    process.env.VERCEL_GIT_COMMIT_REF ||
     process.env.VERCEL_GITHUB_COMMIT_REF ||
     process.env.VERCEL_GITLAB_COMMIT_REF ||
     process.env.VERCEL_BITBUCKET_COMMIT_REF ||
