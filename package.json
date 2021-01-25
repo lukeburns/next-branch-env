@@ -1,0 +1,31 @@
+{
+  "name": "next-branch-env",
+  "version": "0.1.0",
+  "description": "Branch-specific environments for git-deployed Vercel Next.js deployments.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukeburns/next-branch-env.git"
+  },
+  "keywords": [
+    "nextjs",
+    "vercel",
+    "environment",
+    "env"
+  ],
+  "author": "Luke Burns",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lukeburns/next-branch-env/issues"
+  },
+  "homepage": "https://github.com/lukeburns/next-branch-env#readme",
+  "dependencies": {
+    "next-env": "^1.1.1"
+  },
+  "devDependencies": {
+    "next": "^10.0.5"
+  }
+}
