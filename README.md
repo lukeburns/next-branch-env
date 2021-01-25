@@ -98,9 +98,9 @@ which accepts `options` that include
 ```js
 const options = {
   skip: false, // skip rewrite if variable already exists, rather than overwrite
-  expose: true, // expose branch name as NEXT_PUBLIC_BRANCH variable to the browser
-  branch: 'string', // if a branch is not found in env, you can supply your own (alternatively, you can set this as an env var — see below)
+  expose: 'NEXT_PUBLIC_BRANCH', // expose branch name as NEXT_PUBLIC_BRANCH env variable (remove NEXT_PUBLIC_ to make private or just set to false)
   verbose: true, // log rewrites (values are not exposed)
+  branch: 'string', // if a branch is not found in env, you can supply your own (setting this with an env var is probably more convenient — see below)
   ...nextEnvOptions, // options for next-env
 }
 ```

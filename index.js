@@ -2,8 +2,8 @@ const nextEnv = require('next-env')
 
 module.exports = function nextBranchEnv (opts = {}) {
   const skip = opts.skip || false
-  const expose = opts.expose || true
-  const verbose = opts.verbose || true
+  const expose = opts.expose || 'NEXT_PUBLIC_BRANCH'
+  const verbose = typeof opts.verbose !== 'undefined' ? opts.verbose : true
   const provider = process.env.VERCEL_GIT_PROVIDER || opts.provider || ''
   const owner = process.env.VERCEL_GIT_REPO_OWNER || opts.owner || 'git'
   const repo = process.env.VERCEL_GIT_REPO_SLUG || process.env.GIT_REPO_SLUG || opts.repo || 'local'
@@ -23,7 +23,7 @@ module.exports = function nextBranchEnv (opts = {}) {
     if (provider) {
       verbose && console.log(`${prefix}Detected git provider ${provider}.`)
     }
-    verbose && console.log(`${prefix}Processing '${branch}' branch environment variables.`)
+    verbose && console.log(`${prefix}Processing '${branch}' branch environment variables`)
 
     let overrideCount = 0
     let skipCount = 0
@@ -54,16 +54,17 @@ module.exports = function nextBranchEnv (opts = {}) {
       }
     })
 
-    verbose && console.log(`${prefix}${writeCount + overrideCount} environment variables pulled from '${branch}' environment.`)
+    verbose && console.log(`${prefix}${writeCount + overrideCount} environment variables pulled from '${branch}' environment`)
 
     if (skip) {
       verbose && console.log(`${prefix}${skipCount} environment variables were skipped, because they already exist in the target environment.`)
-      verbose && console.log(`Ensure that the 'skip' option is set to 'false' if you want existing environment variables to be overwritten by those in the ${branch} environment.`)
+      verbose && console.log(`${prefix}Ensure that the 'skip' option is set to 'false' if you want existing environment variables to be overwritten by those in the ${branch} environment.`)
     }
 
     if (expose) {
-      process.env.NEXT_PUBLIC_BRANCH = branch
-      console.log(`${prefix}NEXT_PUBLIC_BRANCH=${branch} (set 'expose: false' if you don't want the branch to be exposed to the browser)`)
+      const key = typeof expose === 'string' ? expose : 'NEXT_PUBLIC_BRANCH'
+      process.env[key] = branch
+      console.log(`${prefix}Branch '${branch}' is exposed as the env variable ${key}=${process.env[key]}`)
     }
   } else {
     console.log(
