@@ -83,5 +83,5 @@ module.exports = function nextBranchEnv (opts = {}) {
     ...opts
   })
 
-  return withNextEnv(opts)
+  return withNextEnv
 }
